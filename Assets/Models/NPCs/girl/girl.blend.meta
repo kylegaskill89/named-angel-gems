@@ -1,131 +1,8 @@
 fileFormatVersion: 2
 guid: 53fe6d36c23a039499b62b5ce08c93f5
 ModelImporter:
-  serializedVersion: 21202
-  internalIDToNameTable:
-  - first:
-      74: 1627779874216491206
-    second: girl_armL|girl_arm2LCry
-  - first:
-      74: -570124562578317566
-    second: girl_armL|girl_arm2RCry
-  - first:
-      74: -7336162199836251740
-    second: girl_armL|girl_armLNormal
-  - first:
-      74: 3219614051424675064
-    second: girl_armL|girl_armRNormal
-  - first:
-      74: -8542091859080803549
-    second: girl_armL|girl_cryHead
-  - first:
-      74: 7042277876657736416
-    second: girl_armL|girl_cryLArm
-  - first:
-      74: -4543894398727312802
-    second: girl_armL|girl_cryRArm
-  - first:
-      74: 812158048044829177
-    second: girl_armL|girl_normalHead
-  - first:
-      74: 8329133835202792682
-    second: girl_arm2L|girl_arm2LCry
-  - first:
-      74: -1144561485601246052
-    second: girl_arm2L|girl_arm2RCry
-  - first:
-      74: -6312420124533673758
-    second: girl_arm2L|girl_armLNormal
-  - first:
-      74: 5936439268471532469
-    second: girl_arm2L|girl_armRNormal
-  - first:
-      74: -3245095846640943639
-    second: girl_arm2L|girl_cryHead
-  - first:
-      74: 1606612551635800293
-    second: girl_arm2L|girl_cryLArm
-  - first:
-      74: -6871005721676291264
-    second: girl_arm2L|girl_cryRArm
-  - first:
-      74: 2388616239550097823
-    second: girl_arm2L|girl_normalHead
-  - first:
-      74: 8077729928126686270
-    second: girl_head|girl_arm2LCry
-  - first:
-      74: 8330062695355904598
-    second: girl_head|girl_arm2RCry
-  - first:
-      74: -4359827549451652472
-    second: girl_head|girl_armLNormal
-  - first:
-      74: -6738050195174388065
-    second: girl_head|girl_armRNormal
-  - first:
-      74: -7611944281646761614
-    second: girl_head|girl_cryHead
-  - first:
-      74: -3333553183891675139
-    second: girl_head|girl_cryLArm
-  - first:
-      74: 5424061338445795487
-    second: girl_head|girl_cryRArm
-  - first:
-      74: -1848234457363931708
-    second: girl_head|girl_normalHead
-  - first:
-      74: 2780257618516046265
-    second: girl_arm2R|girl_arm2LCry
-  - first:
-      74: 1915621606557627123
-    second: girl_arm2R|girl_arm2RCry
-  - first:
-      74: -8889875663175448923
-    second: girl_arm2R|girl_armLNormal
-  - first:
-      74: -9174871936779125566
-    second: girl_arm2R|girl_armRNormal
-  - first:
-      74: -9148492524077275797
-    second: girl_arm2R|girl_cryHead
-  - first:
-      74: -3356809340666042825
-    second: girl_arm2R|girl_cryLArm
-  - first:
-      74: 8473968294555578405
-    second: girl_arm2R|girl_cryRArm
-  - first:
-      74: -8128151172008242773
-    second: girl_arm2R|girl_normalHead
-  - first:
-      74: -9107582450345398417
-    second: girl_armR|girl_arm2LCry
-  - first:
-      74: -4428185630250624451
-    second: girl_armR|girl_arm2RCry
-  - first:
-      74: -4825766801578681032
-    second: girl_armR|girl_armLNormal
-  - first:
-      74: -1864213731040220242
-    second: girl_armR|girl_armRNormal
-  - first:
-      74: 135464861501354163
-    second: girl_armR|girl_cryHead
-  - first:
-      74: 2727656164445755617
-    second: girl_armR|girl_cryLArm
-  - first:
-      74: 5478106784259642528
-    second: girl_armR|girl_cryRArm
-  - first:
-      74: 172158493359853155
-    second: girl_armR|girl_normalHead
-  - first:
-      74: -484935572221669546
-    second: girl_armL|girl_arm2LNormal
+  serializedVersion: 22200
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -137,17 +14,15 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    removeConstantScaleCurves: 1
+    removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 1
-    animationCompression: 3
+    importConstraints: 0
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -163,6 +38,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -190,6 +66,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -199,51 +76,11 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton:
-    - name: girl(Clone)
-      parentName: 
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: girl_body
-      parentName: girl(Clone)
-      position: {x: -0.0000000017189653, y: 0.4780582, z: 0.023406047}
-      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-      scale: {x: 0.8980322, y: 0.8980322, z: 0.8980322}
-    - name: girl_armL
-      parentName: girl(Clone)
-      position: {x: -0.059276603, y: 0.5958395, z: 0.019210147}
-      rotation: {x: 0.9309245, y: 0.009921751, z: -0.36405587, w: -0.027285106}
-      scale: {x: 0.7652218, y: 0.8980321, z: 0.8980321}
-    - name: girl_arm2L
-      parentName: girl_armL
-      position: {x: -0.17180444, y: -0.000024848152, z: -0.00000014714897}
-      rotation: {x: -0.30831197, y: -0.5796834, z: 0.42814943, w: 0.62096614}
-      scale: {x: 0.999519, y: 0.99634254, z: 0.8616935}
-    - name: girl_head
-      parentName: girl(Clone)
-      position: {x: -0, y: 0.86162066, z: 0}
-      rotation: {x: -0.56926394, y: 0, z: -0, w: 0.8221548}
-      scale: {x: 0.78601855, y: 0.78601855, z: 0.78601855}
-    - name: girl_armR
-      parentName: girl(Clone)
-      position: {x: 0.054211684, y: 0.5958395, z: 0.019210141}
-      rotation: {x: 0.94528353, y: 0.014233295, z: 0.32540888, w: -0.018590884}
-      scale: {x: 0.7652218, y: 0.8980321, z: 0.8980321}
-    - name: girl_arm2R
-      parentName: girl_armR
-      position: {x: 0.1718045, y: -0.000024944544, z: -0.000000057742}
-      rotation: {x: -0.39066774, y: 0.5960785, z: -0.35166258, w: 0.6069618}
-      scale: {x: 0.99973863, y: 0.99983984, z: 0.8573771}
-    - name: girl_leg
-      parentName: girl(Clone)
-      position: {x: 0.000000007450581, y: 0.17159866, z: 0.01845755}
-      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-      scale: {x: 0.8980321, y: 0.6020197, z: 0.8980321}
+    skeleton: []
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -254,14 +91,16 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
