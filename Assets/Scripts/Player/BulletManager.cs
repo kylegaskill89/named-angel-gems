@@ -4,10 +4,14 @@ using System.Collections;
 public class BulletManager : MonoBehaviour {
 
     BlasterManager blasterManager;
+    AudioSource audioSource;
+    [SerializeField] AudioClip damageSound;
+    [SerializeField] AudioClip collisionSound;
 
-	void Start ()
+    void Start ()
     {
-         blasterManager = GameObject.Find("BulletSpawnLocation").GetComponent<BlasterManager>();
+        blasterManager = GameObject.Find("BulletSpawnLocation").GetComponent<BlasterManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
 	void Update ()
@@ -22,6 +26,13 @@ public class BulletManager : MonoBehaviour {
         if (collision.collider.TryGetComponent<IDamageable>(out var damageable))
         {
             damageable.Damage(blasterManager.attack);
+            blasterManager.collisionAudioSource.clip = damageSound;
+            blasterManager.collisionAudioSource.Play();
+        }
+        else
+        {
+            blasterManager.collisionAudioSource.clip = collisionSound;
+            blasterManager.collisionAudioSource.Play();
         }
 
         Destroy (gameObject);

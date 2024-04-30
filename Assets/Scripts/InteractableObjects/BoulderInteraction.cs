@@ -7,6 +7,7 @@ public class BoulderInteraction : MonoBehaviour, IInteractable, IDamageable
     [SerializeField] Dialogue dialogue;
     [SerializeField] DialogueManager manager;
     [SerializeField] int health;
+    [SerializeField] AudioClip destroySound;
 
     public void Interact()
     {
@@ -20,13 +21,15 @@ public class BoulderInteraction : MonoBehaviour, IInteractable, IDamageable
 
         if (health <= 0)
         {
+            MusicManager.Instance.PlaySound(destroySound);
             Destroy(gameObject);
         }
     }
 
      public void OnDestroy()
      {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 24f);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 24f);       
+        
 
         for (int i = 0; i < hitColliders.Length; i++)
         {
@@ -38,6 +41,4 @@ public class BoulderInteraction : MonoBehaviour, IInteractable, IDamageable
             }
         }
      }
- 
-
 }

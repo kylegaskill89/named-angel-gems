@@ -5,6 +5,8 @@ public class BlasterManager : MonoBehaviour {
 
     public GameObject bullet;
     GameObject bulletClone;
+    public AudioSource shootAudioSource;
+    public AudioSource collisionAudioSource;
 
     [Space(10)]
     public bool canFire = true;
@@ -27,7 +29,7 @@ public class BlasterManager : MonoBehaviour {
     float timestamp;
 
 
-	void Update () {
+    void Update () {
 
         //Handle shooting
 
@@ -55,6 +57,7 @@ public class BlasterManager : MonoBehaviour {
         {            
             isShooting = true;
             shotCount++;
+            shootAudioSource.Play();
             bulletClone = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
             Destroy(bulletClone, range / 10);
             Debug.Log("FIRE!");            
