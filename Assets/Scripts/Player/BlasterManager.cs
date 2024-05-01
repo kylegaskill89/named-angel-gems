@@ -14,6 +14,7 @@ public class BlasterManager : MonoBehaviour {
 
     [Space(10)]
     public float speed;
+    public float rotateSpeed;
 
     public float fireRate;
 
@@ -33,22 +34,24 @@ public class BlasterManager : MonoBehaviour {
 
         //Handle shooting
 
-        if (shotCount == energy)
+        if (GameManager.Instance.state == GameManager.GameState.Normal)
         {
-            isShooting = false;
-            canFire = false;
-        }
-        if (shotCount < energy)
-        {
-            canFire = true;
-        }
+            if (shotCount == energy)
+            {
+                isShooting = false;
+                canFire = false;
+            }
+            if (shotCount < energy)
+            {
+                canFire = true;
+            }
 
 
-        if (Input.GetButton("Shoot") && canFire && Time.time >= timestamp)
-        {
-            Fire();
+            if (Input.GetButton("Shoot") && canFire && Time.time >= timestamp)
+            {
+                Fire();
+            }
         }
-
     }
 
     void Fire()

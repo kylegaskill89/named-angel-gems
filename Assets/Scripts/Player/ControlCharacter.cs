@@ -19,6 +19,9 @@ public class ControlCharacter : MonoBehaviour
     public float rollLength;
     [SerializeField] float quickTurnSpeed;
     [SerializeField] float gravity;
+    [SerializeField] AudioClip jumpSound;
+    [SerializeField] AudioClip landSound;
+    private bool landPlayed;
 
     [Space(20)]
     public float jumpHeight = 300f;
@@ -205,22 +208,23 @@ public class ControlCharacter : MonoBehaviour
 
     void GroundCheck()
     {
-        
-
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, 4f))
         {
             isGrounded = true;
+            
 
             jumpTimer += Time.deltaTime;
 
             if (jumpTimer >= .25f)
             {
                 canJump = true;
+                landPlayed = false;
             }
             else
             {
                 canJump = false;
+                Land();
             }
         }
         else
@@ -233,6 +237,7 @@ public class ControlCharacter : MonoBehaviour
     void Jump()
     {
         velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        MusicManager.Instance.PlaySound(jumpSound);
     }
 
     void RollRight()
@@ -243,5 +248,14 @@ public class ControlCharacter : MonoBehaviour
     void RollLeft()
     {
         isRolling = true;
+    }
+
+    void Land()
+    {
+        if (landPlayed == false)
+        {
+            MusicManager.Instance.PlaySound(landSound);
+            landPlayed = true;
+        }
     }
 }

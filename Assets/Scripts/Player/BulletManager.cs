@@ -16,9 +16,9 @@ public class BulletManager : MonoBehaviour {
 
 	void Update ()
     {
-
         GetComponent<Rigidbody>().velocity = transform.forward * blasterManager.speed;
 
+        transform.Rotate(0, 0, -blasterManager.rotateSpeed);
     }
 
     private void OnCollisionEnter(Collision collision)

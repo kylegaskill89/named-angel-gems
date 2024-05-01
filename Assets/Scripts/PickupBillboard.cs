@@ -17,6 +17,6 @@ public class PickupBillboard : MonoBehaviour
     {
         transform.LookAt(thisCam.transform);
         
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+        transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.eulerAngles.y, transform.rotation.z);
     }
 }
