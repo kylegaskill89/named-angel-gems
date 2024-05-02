@@ -62,8 +62,7 @@ public class BlasterManager : MonoBehaviour {
             shotCount++;
             shootAudioSource.Play();
             bulletClone = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
-            Destroy(bulletClone, range / 10);
-            Debug.Log("FIRE!");            
+            Destroy(bulletClone, range / 10);          
             timestamp = Time.time + rapid;
         }
 

@@ -7,6 +7,7 @@ public class DoorInteraction : MonoBehaviour, IInteractable
 {
     [SerializeField] bool regularDoor = true;
     [SerializeField] AudioClip musicClip = null;
+    [SerializeField] float delaySpeed = 3;
     public Transform teleportLocation;
     GameObject playerObject;
 
@@ -24,20 +25,15 @@ public class DoorInteraction : MonoBehaviour, IInteractable
         }
         else
         {
-            StartCoroutine(SpecialDoor());
+            TeleportDoor();
         }
 
     }
 
-    public IEnumerator SpecialDoor()
+    public void TeleportDoor()
     {
-        GameManager.Instance.state = GameManager.GameState.Dialogue;
-        StartCoroutine(UIManager.Instance.FadeToBlack(1f));
+        StartCoroutine(UIManager.Instance.DoorFade(delaySpeed, teleportLocation));
         StartCoroutine(MusicManager.Instance.ChangeMusic(musicClip));
-        playerObject.transform.position = teleportLocation.position;
-        playerObject.transform.rotation = teleportLocation.rotation;
-        GameManager.Instance.state = GameManager.GameState.Normal;
-        yield return null;
     }
 
 }
