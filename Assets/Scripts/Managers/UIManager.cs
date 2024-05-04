@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image FadeImage;
     [SerializeField] CanvasRenderer fadeCanvas;
     [SerializeField] GameObject playerObject;
+    [SerializeField] Canvas gameplayCanvas;
+    [SerializeField] Canvas pauseCanvas;
 
     private void Awake()
     {
@@ -34,5 +36,26 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.state = GameManager.GameState.Normal;
 
         yield return null;
+    }
+
+    public void ResumeGame()
+    {
+        gameplayCanvas.gameObject.SetActive(true);
+        pauseCanvas.gameObject.SetActive(false);
+    }
+    public void PauseGame()
+    {
+        Debug.Log("Pause");
+        gameplayCanvas.gameObject.SetActive(false);
+        pauseCanvas.gameObject.SetActive(true);
+    }
+
+    public void PauseUpdate()
+    {
+        if (Input.GetButtonDown("Pause"))
+        {
+            ResumeGame();
+            GameManager.Instance.state = GameManager.GameState.Normal;
+        }
     }
 }

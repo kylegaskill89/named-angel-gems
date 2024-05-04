@@ -366,6 +366,7 @@
 -r:"Library/Bee/artifacts/2400b0aE.dag/UnityEngine.XR.LegacyInputHelpers.ref.dll"
 "Assets/PSXShaderKit/Scripts/PSXPostProcessEffect.cs"
 "Assets/PSXShaderKit/Scripts/PSXShaderManager.cs"
+"Assets/Scripts/BackgroundController.cs"
 "Assets/Scripts/IDamageable.cs"
 "Assets/Scripts/IInteractable.cs"
 "Assets/Scripts/InteractableObjects/BoulderInteraction.cs"

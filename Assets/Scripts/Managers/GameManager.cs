@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 { 
-    public enum GameState { Normal, Dialogue }
+    public enum GameState { Normal, Dialogue, Pause }
     [SerializeField] ControlCharacter controlCharacter;
     [SerializeField] public PlayerStats playerStats;
 
@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
         else if (state == GameState.Dialogue)
         {
             DialogueManager.Instance.HandleUpdate();
+        }
+        else if (state == GameState.Pause)
+        {
+            UIManager.Instance.PauseUpdate();
         }
     }
 }

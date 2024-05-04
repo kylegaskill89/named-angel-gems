@@ -39,7 +39,6 @@ public class MusicManager : MonoBehaviour
         while (timer < fadeTime)
         {
             timer += Time.deltaTime;
-            Debug.Log(timer);
             musicSource.volume = volumeCurve.Evaluate(timer);
             yield return null;
         }        
@@ -51,7 +50,6 @@ public class MusicManager : MonoBehaviour
         while (timer > 0)
         {
             timer -= Time.deltaTime;
-            Debug.Log(timer);
             musicSource.volume = volumeCurve.Evaluate(timer);
             yield return null;
         }

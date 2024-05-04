@@ -55,6 +55,12 @@ public class ControlCharacter : MonoBehaviour
 
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
+        if (Input.GetButtonDown("Pause") && GameManager.Instance.state == GameManager.GameState.Normal && isGrounded)
+        {
+            UIManager.Instance.PauseGame();
+            GameManager.Instance.state = GameManager.GameState.Pause;
+        }
+
         if (isSlow)
         {
             speed = slowSpeed;
