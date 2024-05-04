@@ -8,7 +8,7 @@ public class MusicManager : MonoBehaviour
 
     private AudioSource musicSource;
     public AudioSource sfxSource;
-    bool doneFading;
+    [SerializeField] AnimationCurve volumeCurve;
 
 
     private void Awake()
@@ -33,26 +33,28 @@ public class MusicManager : MonoBehaviour
         musicSource.clip = clip;
     }
 
-    public void StartMusicChange(AudioClip clip)
+    public IEnumerator ChangeMusic(AudioClip clip, float fadeTime)
     {
-        StartCoroutine(ChangeMusic(clip));
-    }
-
-    public IEnumerator ChangeMusic(AudioClip clip)
-    {
-        bool lerped = false;
-        while (lerped == false)
+        float timer = 0;
+        while (timer < fadeTime)
         {
-            musicSource.volume -= .1f * Time.deltaTime;
-
-            if (musicSource.volume <= 0)
-            {
-                lerped = true;
-            }
-        }
+            timer += Time.deltaTime;
+            Debug.Log(timer);
+            musicSource.volume = volumeCurve.Evaluate(timer);
+            yield return null;
+        }        
 
         musicSource.clip = clip;
-        PlayMusic();
+        musicSource.Play();
+
+        timer = fadeTime;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            Debug.Log(timer);
+            musicSource.volume = volumeCurve.Evaluate(timer);
+            yield return null;
+        }
         yield return null;
     }
 

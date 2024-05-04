@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class DoorInteraction : MonoBehaviour, IInteractable
 {
-    [SerializeField] bool regularDoor = true;
     [SerializeField] AudioClip musicClip = null;
-    [SerializeField] float delaySpeed = 3;
+    float delaySpeed = 3;
     public Transform teleportLocation;
     GameObject playerObject;
+
+    enum DoorType
+    {
+        regularDoor,
+        teleportDoor,
+    }
+    [SerializeField] DoorType type;
 
     private void Start()
     {
@@ -18,12 +24,12 @@ public class DoorInteraction : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (regularDoor) 
+        if (type == DoorType.regularDoor) 
         {
-            playerObject.transform.position = teleportLocation.position;
+            playerObject.transform.position = teleportLocation.position + new Vector3 (0, 3.8f, 0);
             playerObject.transform.rotation = teleportLocation.rotation;
         }
-        else
+        else if (type == DoorType.teleportDoor)
         {
             TeleportDoor();
         }
@@ -33,7 +39,10 @@ public class DoorInteraction : MonoBehaviour, IInteractable
     public void TeleportDoor()
     {
         StartCoroutine(UIManager.Instance.DoorFade(delaySpeed, teleportLocation));
-        StartCoroutine(MusicManager.Instance.ChangeMusic(musicClip));
+        if (musicClip)
+        {
+            StartCoroutine(MusicManager.Instance.ChangeMusic(musicClip, delaySpeed / 2));
+        }
     }
 
 }

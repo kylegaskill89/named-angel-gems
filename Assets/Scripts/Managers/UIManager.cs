@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
         FadeImage.CrossFadeAlpha(1f, delay / 3, false);
 
         yield return new WaitForSeconds(delay / 2);
-        playerObject.transform.position = teleportLocation.position;
+        playerObject.transform.position = teleportLocation.position + new Vector3(0, 3.8f, 0);
         playerObject.transform.rotation = teleportLocation.rotation;
 
         FadeImage.CrossFadeAlpha(0f, delay / 3, false);

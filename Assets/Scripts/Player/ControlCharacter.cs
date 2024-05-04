@@ -21,7 +21,7 @@ public class ControlCharacter : MonoBehaviour
     [SerializeField] float gravity;
     [SerializeField] AudioClip jumpSound;
     [SerializeField] AudioClip landSound;
-    private bool landPlayed;
+    private bool landPlayed = true;
 
     [Space(20)]
     public float jumpHeight = 300f;

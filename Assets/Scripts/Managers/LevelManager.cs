@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -16,7 +17,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        MusicManager.Instance.StartMusicChange(backgroundMusic);
+        StartCoroutine(MusicManager.Instance.ChangeMusic(backgroundMusic, 0f));
         MusicManager.Instance.PlayMusic();
     }
 }
