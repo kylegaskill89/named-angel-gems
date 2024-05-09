@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,6 +9,10 @@ public class GameManager : MonoBehaviour
     public enum GameState { Normal, Dialogue, Pause }
     [SerializeField] ControlCharacter controlCharacter;
     [SerializeField] public PlayerStats playerStats;
+
+    public int currentMoney;
+    [HideInInspector] public int playHours, playMinutes;
+    private float timer;
 
     public GameState state;
 
@@ -19,6 +25,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        UIManager.Instance.UpdateTimeText(playHours, playMinutes);
+        UIManager.Instance.UpdateMoneyText(currentMoney);
+
         state = GameState.Normal;
 
         DialogueManager.Instance.OnShowDialogue += () =>
@@ -49,5 +58,27 @@ public class GameManager : MonoBehaviour
         {
             UIManager.Instance.PauseUpdate();
         }
+
+        if (state != GameState.Pause)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 60)
+            {
+                playMinutes++;
+                timer = 0;
+                if (playMinutes == 60)
+                {
+                    playHours++;
+                    playMinutes = 0;
+                }
+                UIManager.Instance.UpdateTimeText(playHours, playMinutes);
+            }
+        }
+    }
+
+    public void UpdateMoney(int changeAmt)
+    {
+        currentMoney = changeAmt + currentMoney;
+        UIManager.Instance.UpdateMoneyText(currentMoney);
     }
 }

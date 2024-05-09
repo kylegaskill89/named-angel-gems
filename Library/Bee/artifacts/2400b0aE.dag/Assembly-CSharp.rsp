@@ -386,6 +386,10 @@
 "Assets/Scripts/Player/ControlCamera.cs"
 "Assets/Scripts/Player/ControlCharacter.cs"
 "Assets/Scripts/Player/PlayerStats.cs"
+"Assets/Scripts/UI/ButtonInfo.cs"
+"Assets/Scripts/UI/Buttons/NormalItemsButton.cs"
+"Assets/Scripts/UI/Buttons/PauseCancelButton.cs"
+"Assets/Scripts/UI/IButtonBehavior.cs"
 -langversion:9.0
 
 /deterministic
