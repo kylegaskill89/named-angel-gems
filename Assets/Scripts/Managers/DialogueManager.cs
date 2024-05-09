@@ -11,9 +11,12 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject dialogueBox;
     [SerializeField] TextMeshProUGUI dialogueText;
     public int lettersPerSecond;
+    public int defaultPerSecond;
+    public int fastlettersPerSecond;
 
     public event Action OnShowDialogue;
     public event Action OnCloseDialogue;
+    public event Action OnChangeDialogue;
 
     public static DialogueManager Instance { get; private set; }
 
@@ -36,11 +39,14 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeDialogue(dialogue.Lines[0]));
     }
 
+
     public void HandleUpdate()
     {
         if (Input.GetButtonDown("Slow") && !isTyping)
         {
+            lettersPerSecond = defaultPerSecond;
             currentLine++;
+            OnChangeDialogue?.Invoke();
             if (currentLine < dialogue.Lines.Count)
             {
                 StartCoroutine(TypeDialogue(dialogue.Lines[currentLine]));
@@ -51,6 +57,10 @@ public class DialogueManager : MonoBehaviour
                 dialogueBox.SetActive(false);
                 OnCloseDialogue?.Invoke();
             }
+        }
+        else if (Input.GetButtonDown("Slow") && isTyping)
+        {
+            lettersPerSecond = fastlettersPerSecond;
         }
     }
 

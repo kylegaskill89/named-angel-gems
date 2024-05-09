@@ -372,6 +372,7 @@
 "Assets/Scripts/InteractableObjects/BoulderInteraction.cs"
 "Assets/Scripts/InteractableObjects/Dialogue.cs"
 "Assets/Scripts/InteractableObjects/DoorInteraction.cs"
+"Assets/Scripts/InteractableObjects/MoneyPickupInteraction.cs"
 "Assets/Scripts/InteractableObjects/NPCInteractions/HealInteraction.cs"
 "Assets/Scripts/InteractableObjects/NPCInteractions/NPCInteraction.cs"
 "Assets/Scripts/InteractableObjects/VendingInteraction.cs"
