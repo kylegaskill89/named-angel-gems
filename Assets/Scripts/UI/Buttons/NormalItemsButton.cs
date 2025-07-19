@@ -5,9 +5,10 @@ using UnityEngine;
 public class NormalItemsButton : MonoBehaviour, IButtonBehavior
 {
 
-    [SerializeField] GameObject[] normalItemsObjects;
+    [SerializeField] GameObject normalItemsScreen;
+    
     public void OnUse()
     {
-        StartCoroutine(UIManager.Instance.ChangeScreen(normalItemsObjects));
+        StartCoroutine(UIManager.Instance.ChangeScreen(normalItemsScreen));
     }
 }

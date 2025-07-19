@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IButtonBehavior
 {
+
     public void OnUse()
     {
 

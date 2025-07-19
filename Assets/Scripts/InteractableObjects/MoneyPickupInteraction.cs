@@ -28,6 +28,6 @@ public class MoneyPickupInteraction : MonoBehaviour, IInteractable
     {
         DialogueManager.Instance.OnChangeDialogue -= CheckLine;
         DialogueManager.Instance.OnChangeDialogue -= DestroyObject;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

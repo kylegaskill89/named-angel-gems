@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoulderInteraction : MonoBehaviour, IInteractable, IDamageable
+public class BoulderInteraction : DamageFlash, IInteractable, IDamageable
 {
     [SerializeField] Dialogue dialogue;
     [SerializeField] DialogueManager manager;
@@ -18,6 +18,7 @@ public class BoulderInteraction : MonoBehaviour, IInteractable, IDamageable
     public void Damage(int damageAmount)
     {
         health -= damageAmount;
+        StartCoroutine("TriggerDamageFlash");
 
         if (health <= 0)
         {
@@ -36,7 +37,6 @@ public class BoulderInteraction : MonoBehaviour, IInteractable, IDamageable
             GameObject go = hitColliders[i].gameObject;
             if (go.TryGetComponent<PlayerStats>(out var playerStats))
             {
-                Debug.Log("Ouch");
                 playerStats.Damage(40);
             }
         }

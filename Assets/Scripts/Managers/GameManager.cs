@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateMoney(int changeAmt)
     {
-        currentMoney = changeAmt + currentMoney;
+        currentMoney += changeAmt;
         UIManager.Instance.UpdateMoneyText(currentMoney);
     }
 }

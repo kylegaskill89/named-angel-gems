@@ -18,15 +18,19 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject playerObject;
     [SerializeField] GameObject selectedImageGO;
+    [SerializeField] GameObject currentScreen;
+    [SerializeField] GameObject pauseScreen;
 
     [SerializeField] Canvas gameplayCanvas;
     [SerializeField] Canvas pauseCanvas;
 
     [SerializeField] GameObject[] pauseItems;
-    [SerializeField] GameObject[] itemsToDisable;
     [SerializeField] Button[] pauseMainButtons;
     [SerializeField] Transform[] pauseMainPoints;
     [SerializeField] Transform defaultPoint;
+
+    [SerializeField] Button[] newScreenButtons;
+    [SerializeField] Transform[] newScreenPoints;
 
     [SerializeField] TextMeshProUGUI descriptionText, timeText, moneyText;
 
@@ -39,13 +43,13 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
+        currentScreen = pauseScreen;
     }
 
     private void Start()
     {
         PauseScreen();
-        pauseCanvas.gameObject.SetActive(false);
+        pauseCanvas.gameObject.SetActive(false);    
     }
 
     public IEnumerator DoorFade(float delay, Transform teleportLocation)
@@ -98,26 +102,32 @@ public class UIManager : MonoBehaviour
         }
         if (Input.GetButtonDown("Pause") && inSecondaryMenu)
         {
+            MusicManager.Instance.PlaySound(menuCancelSound);
             PauseScreen();
         }
 
-        if (Input.GetButtonDown("Slow"))
+        if (selectedButton > -1)
+        {
+            if (Input.GetButtonDown("Slow"))
         {
             pauseMainButtons[selectedButton].TryGetComponent<IButtonBehavior>(out var buttonInteract);
+            MusicManager.Instance.PlaySound(menuConfirmSound);
             buttonInteract.OnUse();
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            ChangeSelectedButton(selectedButton - 1);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            ChangeSelectedButton(selectedButton + 1);
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                ChangeSelectedButton(selectedButton - 1);
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                ChangeSelectedButton(selectedButton + 1);
+            }
         }
     }
 
-    public void ChangeSelectedButton(int newButton)
+    /*public void ChangeSelectedButton(int newButton)
     {
         if (newButton < 0)
         {
@@ -135,38 +145,55 @@ public class UIManager : MonoBehaviour
         pauseMainButtons[selectedButton].TryGetComponent<ButtonInfo>(out var info);
         descriptionText.text = info.descriptionText;
         selectedImageGO.transform.position = pauseMainPoints[selectedButton].transform.position;
+    }*/
+
+    public void ChangeSelectedButton(int newButton)
+    {
+        if (!inSecondaryMenu)
+        {
+
+            if (newButton < 0)
+            {
+                newButton = pauseMainButtons.Length - 1;
+            }
+            else if (newButton > pauseMainButtons.Length - 1)
+            {
+                newButton = 0;
+            }
+
+
+            pauseMainButtons[selectedButton].GetComponentInChildren<TextMeshProUGUI>().color = defaultColor;
+            selectedButton = newButton;
+            pauseMainButtons[selectedButton].GetComponentInChildren<TextMeshProUGUI>().color = selectedColor;
+            MusicManager.Instance.PlaySound(selectionSound);
+            pauseMainButtons[selectedButton].TryGetComponent<ButtonInfo>(out var info);
+            descriptionText.text = info.descriptionText;
+            selectedImageGO.transform.position = pauseMainPoints[selectedButton].transform.position;
+        }
+        else selectedButton = -1;
     }
 
-    public IEnumerator ChangeScreen(GameObject[] newObjects)
+    public IEnumerator ChangeScreen(GameObject newScreen)
     {
-        foreach (var obj in pauseItems)
-        {
-            obj.SetActive(false);
-        }
-
-        yield return new WaitForSeconds(1);
-
-        foreach (var obj in newObjects)
-        {
-            obj.gameObject.SetActive(true);
-        }
-
+        currentScreen.SetActive(false);
+        currentScreen = newScreen;
+        currentScreen.SetActive(true);            
         inSecondaryMenu = true;
-        Debug.Log(inSecondaryMenu);
+        selectedButton = 0;
         yield return null;
     }
 
     public void PauseScreen()
     {
-        foreach (var obj in itemsToDisable)
-        {
-            obj.SetActive(false);
-        }
-        foreach (var obj in pauseItems)
+        currentScreen.SetActive(false);
+        currentScreen = pauseScreen;
+        currentScreen.SetActive(true);
+        /*foreach (var obj in pauseItems)
         {
             obj.gameObject.SetActive(true);
-        }
+        }*/
         inSecondaryMenu = false;
+        selectedButton = 0;
     }
 
     public void UpdateTimeText(int hours, int minutes)
